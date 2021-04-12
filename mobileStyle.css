@@ -1,0 +1,203 @@
+body {
+    font-family: "Montserrat";
+}
+
+header {
+    display: flexbox;
+    flex-direction: column;
+}
+
+#logo {
+    display: inline;
+}
+#menuSanduiche
+{
+
+  display: inline;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  z-index: 4;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuSanduiche a
+{
+  text-decoration: none;
+  color:orangered;
+  
+  transition: color 0.3s ease;
+}
+
+#menuSanduiche a:hover
+{
+  color: tomato;
+}
+
+
+#menuSanduiche input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* isso é o que esconde o checkbox */
+  z-index: 2; /* e aqui coloco o menu sanduíche em cima dele */
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Este é um desenho do sanduiche
+ */
+#menuSanduiche span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), 
+            background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), 
+            opacity 0.55s ease;
+}
+
+#menuSanduiche span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuSanduiche span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* O próximo código transforma o menu sanduíche em uma cruz */
+
+#menuSanduiche input:checked ~ span
+{
+  opacity: 3;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/* escondendo o último traço durante a formação da cruz*/
+#menuSanduiche input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * mudando a direção do segundo
+ */
+#menuSanduiche input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+/* posicionando o menu onde eu quero */
+#menu
+{
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuSanduiche input:checked ~ ul
+{
+  transform: none;
+}
+
+
+
+/* assim fica se fosse desktop first @media screen and (max-width: 480px) {} */
+section {
+    text-align: center;
+}
+.caixa {
+    justify-content: space-between; 
+}
+.telas {
+    display: inline;
+
+}
+
+.menuSanduiche {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+/*usando o conceito de mobile first*/
+
+@media screen and (min-width: 576px) {
+    li {
+        width: 35px;
+        height: 5px;
+        background-color: black;
+        margin: 6px 0;
+    }
+}
+.container {
+    max-width: 40px;
+    margin-top: 5%;
+    padding-left: 25%;
+	display: flex;
+}
+    .row {
+        flex-direction: row;
+    }
+    .social {
+        flex: 1;
+        margin: 40%;
+        text-align: center;
+    }
+
+#copywright {
+    position: static;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #5C5C5C;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 10px 45px 10px;
+}
